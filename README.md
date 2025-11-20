@@ -3,15 +3,15 @@
 This project is part of the PLP MERN-Stack Development training.  
 It implements a complete RESTful API using **Express.js**, including routing, middleware, error handling, authentication, filtering, pagination, and searching.
 
----
 
-## 🚀 Features Implemented
 
-### ✔ Basic Server Setup
+ Features Implemented
+
+ Basic Server Setup
 - Express.js server running on **port 3000**
 - Root route (`GET /`) responding with `"Hello, Express.js!"`
 
-### ✔ CRUD Routes for Products
+ CRUD Routes for Products
 - `GET /api/products` – List all products  
 - `GET /api/products/:id` – Get product by ID  
 - `POST /api/products` – Create a new product  
@@ -36,14 +36,11 @@ It implements a complete RESTful API using **Express.js**, including routing, mi
 - Clean JSON error responses  
 - Handles async and sync errors  
 
----
-
-## 📁 Project Structure
 
 
----
 
-## 🛠️ Installation & Setup
+
+##  Installation & Setup
 
 ### 1. Clone the repository
 ```bash

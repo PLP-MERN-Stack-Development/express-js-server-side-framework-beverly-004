@@ -1,62 +1,156 @@
-# Express.js RESTful API Assignment
+# Express.js RESTful API – Week 2 Assignment
 
-This assignment focuses on building a RESTful API using Express.js, implementing proper routing, middleware, and error handling.
+This project is part of the PLP MERN-Stack Development training.  
+It implements a complete RESTful API using **Express.js**, including routing, middleware, error handling, authentication, filtering, pagination, and searching.
 
-## Assignment Overview
+---
 
-You will:
-1. Set up an Express.js server
-2. Create RESTful API routes for a product resource
-3. Implement custom middleware for logging, authentication, and validation
-4. Add comprehensive error handling
-5. Develop advanced features like filtering, pagination, and search
+## 🚀 Features Implemented
 
-## Getting Started
+### ✔ Basic Server Setup
+- Express.js server running on **port 3000**
+- Root route (`GET /`) responding with `"Hello, Express.js!"`
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install dependencies:
-   ```
-   npm install
-   ```
-4. Run the server:
-   ```
-   npm start
-   ```
+### ✔ CRUD Routes for Products
+- `GET /api/products` – List all products  
+- `GET /api/products/:id` – Get product by ID  
+- `POST /api/products` – Create a new product  
+- `PUT /api/products/:id` – Update a product  
+- `DELETE /api/products/:id` – Delete a product  
 
-## Files Included
+### ✔ Middleware (Custom & Built-in)
+- **Logger Middleware** – logs request method, URL, and timestamp  
+- **Body Parser Middleware** – parses JSON request bodies  
+- **Authentication Middleware** – checks API key `x-api-key`  
+- **Validation Middleware** – validates product input  
 
-- `Week2-Assignment.md`: Detailed assignment instructions
-- `server.js`: Starter Express.js server file
-- `.env.example`: Example environment variables file
+### ✔ Advanced API Features
+- Filtering products by category  
+- Pagination using `page` and `limit` query params  
+- Searching by product name  
+- In-memory data storage (`data/products.js`)  
 
-## Requirements
+### ✔ Error Handling
+- Global error handler  
+- Custom error messages for 400, 401, 404, and 500  
+- Clean JSON error responses  
+- Handles async and sync errors  
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Postman, Insomnia, or curl for API testing
+---
 
-## API Endpoints
+## 📁 Project Structure
 
-The API will have the following endpoints:
 
-- `GET /api/products`: Get all products
-- `GET /api/products/:id`: Get a specific product
-- `POST /api/products`: Create a new product
-- `PUT /api/products/:id`: Update a product
-- `DELETE /api/products/:id`: Delete a product
+---
 
-## Submission
+## 🛠️ Installation & Setup
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+### 1. Clone the repository
+```bash
+git clone <your-classroom-repo-url>
+cd express-js-server-side-framework-beverly-004
 
-1. Complete all the required API endpoints
-2. Implement the middleware and error handling
-3. Document your API in the README.md
-4. Include examples of requests and responses
 
-## Resources
+#instal dependencies
 
-- [Express.js Documentation](https://expressjs.com/)
-- [RESTful API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+npm install
+
+the server will run at
+
+http://localhost:3000
+
+
+Authentication
+
+Most API routes require an API key.
+Send the header:
+
+x-api-key: 12345
+
+
+Example in Thunder Client or Postman:
+
+KEY	VALUE
+x-api-key	12345
+
+
+API Endpoints Documentation
+➤ GET /api/products
+
+Returns all products with pagination, search, and filtering.
+
+Query parameters:
+
+?category=electronics
+
+?search=laptop
+
+?page=2&limit=5
+
+Example:
+
+GET /api/products?category=general&page=1&limit=5
+
+
+
+➤ GET /api/products/:id
+
+Returns a single product by ID.
+
+GET /api/products/1
+
+➤ POST /api/products
+
+Create a new product.
+
+Headers:
+
+x-api-key: 12345
+Content-Type: application/json
+
+
+Body example:
+
+{
+  "name": "Laptop",
+  "description": "Fast laptop",
+  "price": 1500,
+  "category": "electronics",
+  "inStock": true
+}
+
+➤ PUT /api/products/:id
+
+Update an existing product.
+
+PUT /api/products/1
+
+➤ DELETE /api/products/:id
+
+Deletes a product.
+
+DELETE /api/products/1
+
+🧪 Example Successful Response
+{
+  "total": 1,
+  "page": 1,
+  "limit": 5,
+  "data": [
+    {
+      "id": "1",
+      "name": "Sample Product",
+      "description": "This is a sample product",
+      "price": 99.99,
+      "category": "general",
+      "inStock": true
+    }
+  ]
+}
+
+🌿 Environment Variables
+
+Create a .env.example file:
+
+API_KEY=12345
+PORT=3000

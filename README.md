@@ -145,7 +145,172 @@ DELETE /api/products/1
   ]
 }
 
-🌿 Environment Variables
+
+
+How to Test the API (Thunder Client or Postman)
+Step 1 — Start your server
+npm start
+
+
+the API is now running at:
+
+http://localhost:3000
+
+Step 2 — Add the required API key
+
+Every request (except /) must include this header:
+
+KEY	VALUE
+x-api-key	12345
+
+Without this header, you will get:
+
+{ "error": "Unauthorized - Invalid API Key" }
+
+Step 3 — Send your requests in Thunder Client or Postman
+
+Choose one:
+
+Thunder Client (VS Code extension)
+
+Postman
+
+curl
+
+📘 API Endpoint Documentation
+
+
+
+🔵 1. GET /api/products
+
+Retrieve all products, supports:
+
+-Filtering
+
+-Searching
+
+-Pagination
+
+Example URL:
+GET http://localhost:3000/api/products?category=general&page=1&limit=5
+
+Example Headers:
+x-api-key: 12345
+
+Example Response:
+{
+  "total": 1,
+  "page": 1,
+  "limit": 5,
+  "data": [
+    {
+      "id": "1",
+      "name": "Sample Product",
+      "description": "This is a sample product",
+      "price": 99.99,
+      "category": "general",
+      "inStock": true
+    }
+  ]
+}
+
+🔵 2. GET /api/products/:id
+
+Retrieve a single product by ID.
+
+Example:
+GET http://localhost:3000/api/products/1
+
+Response:
+{
+  "id": "1",
+  "name": "Sample Product",
+  "description": "This is a sample product",
+  "price": 99.99,
+  "category": "general",
+  "inStock": true
+}
+
+🔵 3. POST /api/products
+
+Create a new product.
+
+Headers:
+x-api-key: 12345
+Content-Type: application/json
+
+Body:
+{
+  "name": "Laptop",
+  "description": "Fast laptop",
+  "price": 1500,
+  "category": "electronics",
+  "inStock": true
+}
+
+Response:
+{
+  "id": "f3ad1fdf-8a12-4a56-9b2d-6c899f14efba",
+  "name": "Laptop",
+  "description": "Fast laptop",
+  "price": 1500,
+  "category": "electronics",
+  "inStock": true
+}
+
+🔵 4. PUT /api/products/:id
+
+Update an existing product.
+
+Example:
+PUT http://localhost:3000/api/products/1
+
+Body:
+{
+  "price": 2000
+}
+
+Response:
+{
+  "id": "1",
+  "name": "Sample Product",
+  "description": "This is a sample product",
+  "price": 2000,
+  "category": "general",
+  "inStock": true
+}
+
+🔵 5. DELETE /api/products/:id
+
+Delete a product by ID.
+
+Example:
+DELETE http://localhost:3000/api/products/1
+
+Response:
+{
+  "id": "1",
+  "name": "Sample Product",
+  "description": "This is a sample product",
+  "price": 99.99,
+  "category": "general",
+  "inStock": true
+}
+
+. GET /api/products/stats/category
+
+Returns product statistics grouped by category.
+
+Example:
+GET http://localhost:3000/api/products/stats/category
+
+Response:
+{
+  "general": 1
+}
+
+
+Environment Variables
 
 Create a .env.example file:
 
